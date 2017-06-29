@@ -31,3 +31,5 @@ find_package(cxxopts CONFIG REQUIRED)
 
 add_executable(eos-dlib-test eos-dlib-test.cpp)
 target_link_libraries(eos-dlib-test PUBLIC dlib::dlib eos::eos glm cxxopts::cxxopts ${OpenCV_LIBS})
+
+install(TARGETS eos-dlib-test DESTINATION bin)
