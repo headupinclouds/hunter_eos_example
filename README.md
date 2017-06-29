@@ -34,5 +34,5 @@ polly.py --toolchain $TOOLCHAIN --verbose --config Release --install --reconfig 
 
 Download models:
 
-https://github.com/patrikhuber/eos/tree/master/share
-https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2
+* https://github.com/patrikhuber/eos/tree/master/share
+* https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2
