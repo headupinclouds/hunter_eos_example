@@ -1,43 +1,32 @@
 /*
  * Sample application for eos deformable face mesh fitting 
  * w/ initial dlib face detection and landmark regression 
- * using the hunter package manager.  No error handling.
+ * using the hunter package manager.  
+ * Simple, needs error handling...
  *
  * https://github.com/patrikhuber/eos
  * https://github.com/davisking/dlib
  * https://github.com/ruslo/hunter
- *
- * Quick start:
- * 
- * cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DCMAKE_BUILD_TYPE=Release
- * 
- * Or using polly toolchains...
- * see: https://github.com/ruslo/polly.git (toolchains)
- *
- * polly.py --toolchain libcxx --verbose --open --reconfig 
- * polly.py --toolchain xcode --verbose --open --reconfig 
- * etc ...
- *
  */
 
 #include <dlib/image_processing/frontal_face_detector.h>
 #include <dlib/image_processing.h>
 #include <dlib/opencv/cv_image.h>
 
-#include "eos/core/Landmark.hpp"
-#include "eos/core/LandmarkMapper.hpp"
-#include "eos/morphablemodel/MorphableModel.hpp"
-#include "eos/morphablemodel/Blendshape.hpp"
-#include "eos/fitting/fitting.hpp"
-#include "eos/fitting/nonlinear_camera_estimation.hpp"
-#include "eos/render/detail/render_detail.hpp"
-#include "eos/render/utils.hpp"
+#include <eos/core/Landmark.hpp>
+#include <eos/core/LandmarkMapper.hpp>
+#include <eos/morphablemodel/MorphableModel.hpp>
+#include <eos/morphablemodel/Blendshape.hpp>
+#include <eos/fitting/fitting.hpp>
+#include <eos/fitting/nonlinear_camera_estimation.hpp>
+#include <eos/render/detail/render_detail.hpp>
+#include <eos/render/utils.hpp>
 
 #include <opencv2/highgui.hpp>
 
-#include "cxxopts.hpp"
+#include <cxxopts.hpp>
 
-#include "glm/ext.hpp"
+#include <glm/ext.hpp>
 
 struct Resources
 {
@@ -210,3 +199,4 @@ int main(int argc, char **argv)
     
     cv::imwrite(output, image);
 }
+
