@@ -103,7 +103,8 @@ static void draw_wireframe(cv::Mat &image, const eos::core::Mesh& mesh, const GL
 
 static eos::core::LandmarkCollection<cv::Vec2f> convertLandmarks(const dlib::full_object_detection &shape)
 {
-    eos::core::LandmarkCollection<cv::Vec2f> landmarks(shape.num_parts());
+    eos::core::LandmarkCollection<cv::Vec2f> landmarks;
+    landmarks.reserve(shape.num_parts());
     for(int i = 0; i < shape.num_parts(); i++)
     {
         landmarks.push_back( {std::to_string(i+1), cv::Vec2f(shape.part(i).x(), shape.part(i).y())} );
@@ -192,6 +193,15 @@ int main(int argc, char **argv)
         const auto modelView = rendering_params.get_modelview();
         const auto projection = rendering_params.get_projection();
         draw_wireframe(image, mesh, {modelView, projection, viewport}, {0,255,0});
+        
+        cv::Rect roi(box.left(), box.top(), box.width(), box.height());
+        cv::rectangle(image, roi, {0,255,0}, 2, 8);
+        for (const auto &p : landmarks)
+        {
+            const auto &q = p.coordinates;
+            std::cout << q << std::endl;
+            cv::circle(image, cv::Point(q[0], q[1]), 4, {0,0,255}, -1, 8);
+        }
         
         //cv::imshow("eos", image);
         //cv::waitKey(0);
