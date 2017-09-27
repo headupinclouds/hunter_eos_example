@@ -27,7 +27,7 @@ Or using polly toolchains (see: https://github.com/ruslo/polly.git)
 
 ```
 TOOLCHAIN=xcode # or one for iOS, Android, etc
-polly.py --toolchain $TOOLCHAIN --verbose --config Release --install --reconfig --open
+polly.py --toolchain $TOOLCHAIN --verbose --config Release --install --reconfig --open --fwd HUNTER_CONFIGURATION_TYPES=Release
 ```
 
 ![example](https://user-images.githubusercontent.com/554720/27667305-edd3b0c4-5c47-11e7-94be-67ff6423dcdf.jpg)
